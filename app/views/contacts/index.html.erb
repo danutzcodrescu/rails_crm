@@ -12,6 +12,7 @@
   <tbody>
     <% @contacts.each do |contact| %>
       <tr>
+        <td><%= contact.Full_Name %></td>
         <td><%= link_to 'Show', contact %></td>
         <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
         <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
