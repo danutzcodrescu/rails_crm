@@ -1,42 +1,45 @@
-<%= form_for(@contact) do |f| %>
-  <% if @contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
 
-      <ul>
-      <% @contact.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-      <p>
-        <%= f.label :Title %><br>
-        <%= select_tag(:Title, options_for_select([['Mr', 'Mr'], ['Ms', 'Ms'],['Dr', 'Dr'], ['Prof.', 'Prof.']]), 
-                        :prompt => "Please select", :required => true)  %>
-      </p>
-      <p>
-        <%= f.label :First_Name %><br>
-        <%= f.text_field :First_Name, :required => true %>
-      </p>
- 
-      <p>
-        <%= f.label :Last_Name %><br>
-        <%= f.text_field :Last_Name, :required => true %>
-      </p>
-      <p>
-        <%= f.label :Email %><br>
-        <%= f.email_field :Email, :required => true %>
-      </p>
-      <p>
-        <%= f.label :Organization %><br>
-        <%= f.text_field :Organization %>
-      </p>
-       <p>
-        <%= f.label :Position %><br>
-        <%= f.text_field :Position %>
-      </p>
-      <div class="actions">
-        <%= f.submit %>
+  <%= form_for(@contact) do |f| %>
+    <% if @contact.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+  
+        <ul>
+        <% @contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
       </div>
-<% end %>
+    <% end %>
+       
+        <p>
+          <%= f.label :First_Name %><br>
+          <%= f.text_field :First_Name, :required => true %>
+        </p>
+       
+        <p>
+          <%= f.label :Last_Name %><br>
+          <%= f.text_field :Last_Name, :required => true %>
+        </p>
+         <p>
+          <%= f.label :Title %><br>
+          <%= f.select :Title, [['Mr', 'Mr'], ['Ms', 'Ms'], ['Dr', 'Dr'], ['Prof', 'Prof']], {prompt: 'Select Person'}, :required => true  %>
+             
+            
+        </p>
+        <p>
+          <%= f.label :Email %><br>
+          <%= f.email_field :Email, :required => true %>
+        </p>
+        <p>
+          <%= f.label :Organization %><br>
+          <%= f.text_field :Organization %>
+        </p>
+         <p>
+          <%= f.label :Position %><br>
+          <%= f.text_field :Position %>
+        </p>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+  <% end %>
