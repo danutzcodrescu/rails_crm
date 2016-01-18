@@ -6,6 +6,13 @@
 <p>Full_Name: <%= @contact.Full_Name %></p>
 <p>Organization: <%= @contact.Organization %></p>
 <p>Position: <%= @contact.Position %></p>
+<p>Email: <%= @contact.Email %></p>
 
+
+
+
+<%= render "logs/log", :collection => @contact.logs%>
+
+<%= link_to 'New Log', new_contact_log_path(@contact) %> 
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
 <%= link_to 'Back', contacts_path %>

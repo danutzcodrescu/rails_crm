@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Contact.destroy_all
+Log.destroy_all
 
 
 title=["Mr", "Ms", "Prof", "Dr"]
@@ -18,4 +19,14 @@ title=["Mr", "Ms", "Prof", "Dr"]
     position = Faker::Name.title
     email = Faker::Internet.email
     Contact.create!(First_Name: first_name, Last_Name: last_name, Title: prefix, Organization: organization, Position: position, Email: email)
+end
+
+contacts = Contact.all
+contacts.each do |contact|
+    
+    3.times do
+        comment = Faker::Hipster.sentence
+        responsible =  Faker::Name.first_name
+        Log.create!(comment: comment, contact_id: contact.id, responsible: responsible)
+    end
 end
